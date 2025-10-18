@@ -1,0 +1,79 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2em;
+}
+
+.catalogo-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2em;
+}
+
+.produto-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    height: 50em;
+    width: 70em;    
+}
+
+.produto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8%;
+    margin: 10px;
+}
+
+.cover:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transform: translateY(-5px);
+    transition: all 0.3s ease;
+}
+
+.cover {
+    margin: 10px;
+    width: 60%;
+    height: 60%;
+}
+
+.carrossel {
+    width: 100vw;
+    overflow: hidden;
+}
+.carrossel::-webkit-scrollbar {
+    display: none;
+}
+
+.group {
+    width: 100vw;
+    display: flex;
+    flex-direction: row;
+    width: max-content;
+
+    animation: spin 15s linear infinite;
+}
+
+.group:hover {
+    animation-play-state: paused;
+}
+
+
+
+.carrossel-image {
+    height: 400px;
+    width: 400px;
+    flex-shrink: 0;
+    /* border-left: 0.5px solid #ffea2f;
+    border-right: 0.5px solid #ffea2f; */
+}
+
+@keyframes spin {
+    from { transform: translateX(0);}
+    to { transform: translateX(-20%);}
+}

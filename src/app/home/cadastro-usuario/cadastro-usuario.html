@@ -1,0 +1,30 @@
+<form #f="ngForm" (ngSubmit)="onSubmit()">
+  <h2>Cadastro de Usuário Simples</h2>
+
+  <div>
+    <label for="nome">Nome:</label>
+    <input id="nome" type="text" name="nome" [(ngModel)]="usuario.nome" placeholder="Nome">
+  </div>
+
+  <div>
+    <label for="email">E-mail:</label>
+    <input id="email" type="email" name="email" [(ngModel)]="usuario.email" placeholder="E-mail">
+  </div>
+
+  <div>
+    <label for="senha">Senha:</label>
+    <input id="senha" type="password" name="senha" [(ngModel)]="usuario.senha" placeholder="Senha">
+  </div>
+
+  <div>
+    <label for="documento">Documento:</label>
+    <input id="documento" type="text" name="documento" [(ngModel)]="usuario.documento" placeholder="CPF/CNPJ">
+  </div>
+
+  <div class="checkbox-container">
+    <input id="ativo" type="checkbox" name="ativo" [(ngModel)]="usuario.ativo">
+    <label for="ativo">Usuário Ativo</label>
+  </div>
+
+  <button type="submit" >Cadastrar Usuário</button>
+</form>

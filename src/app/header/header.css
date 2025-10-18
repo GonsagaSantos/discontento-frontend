@@ -1,0 +1,44 @@
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg); 
+    }
+}
+
+.rotating-svg {
+    display: block; 
+    animation: spin 3s linear infinite; 
+    margin: 0 10px 0 10px;
+    margin-left: 20px;
+}
+
+.header-container {
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    width: 100vw;
+    box-sizing: border-box;
+
+    background-color: #ffea2f;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 0.5px #000 solid;
+    padding: 5px 0;
+    margin-bottom: 0;
+}
+
+.links {
+    display: flex;
+    padding: 10px;
+}
+
+.links a {
+    margin: 0 15px 0 15px;
+    text-decoration: none;
+    font-weight: bold;
+}

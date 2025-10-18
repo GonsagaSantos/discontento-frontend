@@ -1,0 +1,63 @@
+/* Container geral para centralizar */
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilo do Título Principal (cor laranja/amarelo) */
+.titulo-principal {
+    color: orange; /* Cor similar à da imagem */
+    font-size: 36px;
+    margin-bottom: 5px;
+}
+
+/* Estilo do Subtítulo */
+.subtitulo {
+    font-style: italic;
+    font-size: 14px;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+/* Estilo do Link de Cadastro */
+.link-cadastro {
+    color: blue;
+    text-decoration: underline;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Estilo da Tabela */
+table {
+    width: 500px; /* Largura ajustada para a imagem */
+    border-collapse: collapse; /* Para bordas únicas */
+    border: 3px solid black; /* Borda externa da tabela */
+    margin-top: 20px;
+}
+
+/* Estilo das Células e Cabeçalhos */
+table th, table td {
+    border: 1px solid black;
+    padding: 8px 15px;
+    text-align: left;
+}
+
+/* Estilo do Cabeçalho (Fundo e Texto) */
+table th {
+    background-color: #ddd; /* Fundo cinza claro */
+    font-weight: bold;
+    text-align: center; /* Centraliza o texto do cabeçalho */
+}
+
+/* Ajustes de largura de colunas (opcional, mas ajuda a replicar a imagem) */
+.col-id {
+    width: 10%;
+}
+.col-nome {
+    width: 30%;
+}
+.col-email {
+    width: 60%;
+}

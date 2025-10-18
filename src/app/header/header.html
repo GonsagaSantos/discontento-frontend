@@ -1,0 +1,29 @@
+<header class="header-container">
+    <a [routerLink]="['/']" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+    <svg class="rotating-svg" width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <g clip-path="url(#clip0_3312_2)">
+        <circle cx="12.0004" cy="12.0001" r="11.75" fill="#282828" stroke="#D7D700" stroke-width="0.5" />
+        <circle cx="12.0004" cy="12.0001" r="3" fill="#FFECCE" />
+        <circle cx="5.00037" cy="12.0001" r="1" fill="#D7D700" />
+        <circle cx="19.0004" cy="12.0001" r="1" fill="#D7D700" />
+        <path
+        d="M5.00037 17.0001C10.4665 20.1457 13.5383 20.1251 19.0004 17.0001M5.00037 17.0001C10.4665 20.1457 13.5383 20.1251 19.0004 17.0001"
+        stroke="#FFF700" stroke-width="0.3" />
+        <path d="M5.00037 5.00012C10.4665 8.14571 13.5383 8.12514 19.0004 5.00012" stroke="#FFF700"
+        stroke-width="0.3" />
+        </g>
+        <defs>
+        <clipPath id="clip0_3312_2">
+        <rect width="24" height="24" fill="white" />
+        </clipPath>
+        </defs>
+    </svg>
+    </a>
+
+    <div class="links">
+        <a [routerLink]="['/usuario']">Usuários</a>
+        <a [routerLink]="['/sobre']">Sobre</a>
+    </div>
+    </header>
+
+<router-outlet></router-outlet>
