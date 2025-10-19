@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ProdutoInterface, ProdutoService } from '../../services/produto.service';
+import { ProdutoService } from '../../services/produto.service';
+import { ProdutoInterface } from '../../interfaces/produto.interface';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
@@ -35,5 +36,9 @@ export class Produto implements OnInit {
         console.log('Carregamento de produtos concluído');
       }
     })
+  }
+
+  redirectToProductPage(idProduto: number, nome: string) {
+    console.log(nome +' clicado.');
   }
 }

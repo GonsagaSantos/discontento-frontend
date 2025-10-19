@@ -1,1 +1,52 @@
-<p>cadastrar-disco works!</p>
+<div class="cadastro-disco-container">
+  
+  <form #f="ngForm" (ngSubmit)="onSubmit()" class="form-container">
+    <h2>Novo disco</h2>
+  
+    <div>
+      <label for="nome">Nome:</label>
+      <input id="nome" type="text" name="nome" [(ngModel)]="novoProduto.nome" placeholder="Nome">
+    </div>
+  
+    <div>
+      <label for="cover">Caminho para a capa:</label>
+      <input id="cover_path" type="text" name="cover_path" [(ngModel)]="novoProduto.cover_path" placeholder="Caminho para a capa">
+    </div>
+  
+    <div>
+      <label for="descritivo">Descrição:</label>
+      <input id="descritivo" type="text"  name="descritivo" [(ngModel)]="novoProduto.descritivo" placeholder="Descrição">
+    </div>
+  
+    <div>
+      <label for="keywords">Palavras-Chaves:</label>
+      <input id="keywords" type="text" name="keywords" [(ngModel)]="novoProduto.keywords">
+    </div>
+  
+    <div>
+      <label for="valor">Preço:</label>
+      <input id="valor" type="number" name="valor" [(ngModel)]="novoProduto.valor" placeholder="0.00">
+    </div>
+  
+    <div>
+      <label for="quantidade">Promoção:</label>
+      <input id="promo" type="number" name="promo" [(ngModel)]="novoProduto.promo" placeholder="0.00">
+    </div>
+  
+    <div>
+      <label for="quantidade">Quantidade:</label>
+      <input id="quantidade" type="number" name="quantidade" [(ngModel)]="novoProduto.quantidade" placeholder="0">
+    </div>
+  
+    <div class="checkbox-container">
+      <input id="destaque" type="checkbox" name="destaque" [(ngModel)]="novoProduto.destaque">
+      <label for="destaque">Produto estará na vitrine?</label>
+    </div>
+   
+  
+    <button type="submit" >Cadastrar Usuário</button>
+  </form>
+  
+</div>
+
+<router-outlet></router-outlet>

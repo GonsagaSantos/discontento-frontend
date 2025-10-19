@@ -2,18 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
-export interface ProdutoInterface {
-  idProduto: number;
-  cover_path: string | null;
-  nome: string;
-  descritivo: string;
-  valor: number;
-  promo: number;
-  quantidade: number;
-  destaque: number;
-  keywords: string;
-}
+import { ProdutoInterface, ProdutoGravarInterface } from '../interfaces/produto.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -38,5 +27,9 @@ export class ProdutoService {
         });
       })
     );
+  }
+
+  public postProduto(novoProduto: ProdutoGravarInterface): Observable<ProdutoGravarInterface> {
+    return this.http.post<ProdutoGravarInterface>(`${this.apiUrl}/api/produto`, novoProduto)
   }
 }

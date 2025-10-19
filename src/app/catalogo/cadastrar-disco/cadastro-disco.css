@@ -1,0 +1,25 @@
+.cadastro-disco-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container {
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container div label{
+    margin: 5px 0 5px 10px;
+    margin-right: 10px;
+}
+
+.form-container div input{
+    margin: 5px 0 5px 10px;
+    align-items: end;
+}
+
+.form-container button{
+    cursor: pointer;
+    margin-top: 50px;
+}
