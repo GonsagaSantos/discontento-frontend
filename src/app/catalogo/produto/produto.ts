@@ -40,5 +40,12 @@ export class Produto implements OnInit {
 
   redirectToProductPage(idProduto: number, nome: string) {
     console.log(nome +' clicado.');
+    console.log(idProduto);
+
+    this.produtoService.getProdutoById(idProduto).subscribe({
+      next: (data) => {
+        console.log(data)
+      }
+    })
   }
 }

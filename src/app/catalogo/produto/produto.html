@@ -21,8 +21,7 @@
                 <div class="produto" (click)="redirectToProductPage(produto.idProduto, produto.nome)">
                     <img class="cover" [src]="produto.cover_path" alt="Imagem do produto">
                     <h2>{{ produto.nome }}</h2>
-                    <p>{{ produto.descritivo }}</p>
-                    <p>Preço: {{ produto.valor | currency:'BRL' }}</p>
+                    <p>{{ produto.valor | currency:'BRL' }}</p>
                 </div>
             }
         </div>

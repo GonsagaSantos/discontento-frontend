@@ -21,7 +21,10 @@
     width: 70em;    
 }
 
+
 .produto {
+    border: 1px #232323;
+    font-size: small;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -43,6 +46,7 @@
 }
 
 .carrossel {
+    padding-top: 40px;
     width: 100vw;
     overflow: hidden;
 }

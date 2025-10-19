@@ -29,6 +29,10 @@ export class ProdutoService {
     );
   }
 
+  public getProdutoById(idProduto: number): Observable<ProdutoInterface> {
+    return this.http.get<ProdutoInterface>(`${this.apiUrl}/api/produto/${idProduto}`);
+  }
+
   public postProduto(novoProduto: ProdutoGravarInterface): Observable<ProdutoGravarInterface> {
     return this.http.post<ProdutoGravarInterface>(`${this.apiUrl}/api/produto`, novoProduto)
   }

@@ -15,7 +15,8 @@
 }
 
 .header-container {
-    position: relative;
+    z-index: 10;
+    position: fixed;
     left: 50%;
     right: 50%;
     margin-left: -50vw;
@@ -23,7 +24,7 @@
     width: 100vw;
     box-sizing: border-box;
 
-    background-color: #ffea2f;
+    background-color: #232323;
     display: flex;
     align-items: center;
     justify-content: space-between;
