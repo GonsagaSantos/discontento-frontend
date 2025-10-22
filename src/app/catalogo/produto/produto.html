@@ -1,28 +1,28 @@
 <div class="carrossel">
-    <!-- <app-carrossel></app-carrossel> -->
-     <div class="group">
-         @for(produto of produtos; track produto.idProduto) {
-             <img class="carrossel-image" [src]="produto.cover_path" (click)="redirectToProductPage(produto.idProduto, produto.nome)">
-         }
+    <div class="group">
+        @for(produto of produtos; track produto.idProduto) {
+            <img class="carrossel-image" [src]="produto.cover_path" (click)="redirectToProductPage(produto)">
+        }
 
-         @for(produto of produtos; track produto.idProduto) {
-             <img class="carrossel-image" [src]="produto.cover_path" (click)="redirectToProductPage(produto.idProduto, produto.nome)">
-         }
-     </div>
+        @for(produto of produtos; track produto.idProduto) {
+            <img class="carrossel-image" [src]="produto.cover_path" (click)="redirectToProductPage(produto)">
+        }
+    </div>
 </div>
 
 <div class="container">
-  
     <p><a [routerLink]="['cadastro']" class="link-cadastro">Novo Disco</a></p>
 
     <div class="catalogo-main">
         <div class="produto-container">
             @for(produto of produtos; track produto.idProduto) {
-                <div class="produto" (click)="redirectToProductPage(produto.idProduto, produto.nome)">
-                    <img class="cover" [src]="produto.cover_path" alt="Imagem do produto">
-                    <h2>{{ produto.nome }}</h2>
-                    <p>{{ produto.valor | currency:'BRL' }}</p>
-                </div>
+                <div class="produto" (click)="redirectToProductPage(produto)">
+                    
+                    <div class="draggable-div" #dragTarget> 
+                        <img class="cover" [src]="produto.cover_path" alt="Imagem do produto">
+                    </div>
+                    
+                    </div>
             }
         </div>
     </div>

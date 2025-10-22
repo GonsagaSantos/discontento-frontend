@@ -1,0 +1,17 @@
+<div class="container">
+    <div class="produto-img">
+        <img class="imagem" [src]="[produto?.cover_path]" alt="">
+    </div>
+    
+    <div class="info">
+        @if(produto?.nome != null || produto?.nome != '') {
+            <p>{{produto?.nome}}</p>
+        }
+        @if(produto?.curador != null || produto?.curador != '') {
+            <p>{{produto?.curador}}</p>
+        }
+        @else {
+            <p>Não há curadores</p>
+        }
+    </div>
+</div>

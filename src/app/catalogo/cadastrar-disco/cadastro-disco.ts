@@ -3,11 +3,10 @@ import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ProdutoService } from '../../services/produto.service';
 import { ProdutoGravarInterface } from '../../interfaces/produto.interface';
-import { RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro-disco',
-  imports: [CommonModule, FormsModule, RouterOutlet],
+  imports: [CommonModule, FormsModule],
   templateUrl: './cadastro-disco.html',
   styleUrl: './cadastro-disco.css'
 })

@@ -2,4 +2,5 @@
 html, body {
     margin: 0;
     font-family: Helvetica;
+    cursor: url('../public/discontento.ico'), auto;
 }

@@ -8,6 +8,15 @@ export interface ProdutoInterface {
   quantidade: number;
   destaque: number;
   keywords: string;
+  urlImagem: string;
+  artista: string;
+  anoLancamento: string;
+  curador: string;
+  paisOrigem: string;
+  gravadora: string;
+  carrossel: number;
+  underground: number;
+  emPromo: number;
 }
 
 export interface ProdutoGravarInterface {
