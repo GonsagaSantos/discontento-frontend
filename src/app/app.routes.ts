@@ -2,9 +2,9 @@ import { Routes } from '@angular/router';
 import { Sobre } from './sobre/sobre';
 import { ListaUsuarios } from './home/lista-usuarios/lista-usuarios';
 import { CadastroUsuario } from './home/cadastro-usuario/cadastro-usuario';
-import { Produto } from './catalogo/produto/produto';
+import { Produto } from './catalogo/produto-home/produto';
 import { CadastroDisco } from './catalogo/cadastrar-disco/cadastro-disco';
-import { ProductPage } from './product-pages/product-page/product-page';
+import { ProductPage } from './catalogo/product-page/product-page';
 
 export const routes: Routes = [
     { path: '', component: Produto }, 

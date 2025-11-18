@@ -1,6 +1,6 @@
     <header class="header-container">
         <a [routerLink]="['']" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
-        <svg class="rotating-svg" width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg class="rotating-svg" width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clip-path="url(#clip0_3312_2)">
             <circle cx="12.0004" cy="12.0001" r="11.75" fill="#282828" stroke="#D7D700" stroke-width="0.5" />
             <circle cx="12.0004" cy="12.0001" r="3" fill="#FFECCE" />
@@ -20,10 +20,20 @@
         </svg>
         </a>
 
+        <h1 class="title">
+            <span 
+                *ngFor="let letra of letras; let i = index"
+                class="letra"
+                (mouseenter)="startAnimation($event)"
+            >
+                {{ letra }}
+            </span>
+        </h1>
+
         <div class="links">
+            <p> <i class="bi bi-search"></i> </p>
+            <p> <i class="bi bi-cart-fill"></i> </p>
             <p [routerLink]="['/usuario']"><i class="bi bi-person-fill"></i></p>
             <p [routerLink]="['/sobre']"><i class="bi bi-question"></i></p>
         </div>
         </header>
-
-    <!-- <router-outlet></router-outlet> -->

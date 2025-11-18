@@ -5,6 +5,7 @@
 }
 
 .form-container {
+    margin-top: 5vw;
     justify-content: center;
     align-items: center;
 }
@@ -22,4 +23,5 @@
 .form-container button{
     cursor: pointer;
     margin-top: 50px;
+    margin:  30px;
 }

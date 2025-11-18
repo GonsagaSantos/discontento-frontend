@@ -15,13 +15,18 @@
     margin-top: 2em;
 }
 
+.faixa-lateral {
+
+}
+
 .produto-container {
+    align-items: center;
+    justify-content: center;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     height: 50em;
     width: 70em;    
 }
-
 
 .produto {
     border: 1px #232323;
@@ -31,33 +36,58 @@
     align-items: center;
     justify-content: center;
     border-radius: 8%;
-    margin: 10px;
+    margin: 2em 1em 1em 2em;
     position: relative;
 }
 
-.cover:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+.faixa-esgotado {
+    position: absolute;
+    z-index: 99;
+    background-color: rgba(255, 249, 233, 0.815);
+    height: 3em;
+    width: 100%;
+}
+
+.faixa-esgotado p {
+
+    text-align: center;
+}
+
+.info-produto {
+    margin: 0;
+    padding: 0;
+}
+
+.preco-produto {
+    margin-right: auto;
+    align-items: start;
+    font-family: 'Sora';
+    font-size: 13px;
+}
+
+.nome-produto {
+    font-family: 'Sora';
+    font-size: 17px;
+}
+
+.cover-container {
+    display: flex;
+}
+
+.produto:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transform: translateY(-5px);
     transition: all 0.3s ease;
 }
 
-.draggable-div {
-    position: absolute;
-    z-index: 9;
-    /* margin: 10px; */
-    /* width: 60%;
-    height: 60%; */
-}
-
 .cover {
     cursor: move;
-    margin: 10px;
-    width: 15em;
-    height: 15em;
+    width: 20em;
+    height: 20em;
 }
 
 .carrossel {
-    width: 100vw;
+    margin-top: 5vw;
     overflow: hidden;
 }
 .carrossel::-webkit-scrollbar {
@@ -70,18 +100,16 @@
     flex-direction: row;
     width: max-content;
 
-    animation: spin 15s linear infinite;
+    animation: spin 35s linear infinite;
 }
 
 .group:hover {
     animation-play-state: paused;
 }
 
-
-
 .carrossel-image {
-    height: 400px;
-    width: 400px;
+    height: 20vw;
+    width: 20vw;
     flex-shrink: 0;
     cursor: pointer;
     z-index: 10;
@@ -93,4 +121,18 @@
 @keyframes spin {
     from { transform: translateX(0);}
     to { transform: translateX(-50%);}
+}
+
+.faixa {
+    width: 100vw;
+    height: 3.5vw;
+    background-color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.link-cadastro {
+    color:#fff;
+    text-decoration: none;
 }

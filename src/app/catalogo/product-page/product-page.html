@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="produto-img">
+            <img class="imagem" [src]="[this.produto?.urlImagem]" alt="">
+    </div>
+    
+    <div class="info">
+        @if(produto?.nome != null || produto?.nome != '') {
+            <p>{{produto?.nome}}</p>
+        }
+        @if(produto?.curador != null || produto?.curador != '') {
+            <p (click)="procurarPorCurador(produto?.curador)" >{{produto?.curador}}</p>
+
+            @for(produto of listaProdutos; track produto.idProduto) {
+                @if(produto) {
+                    <p>{{produto.nome}}</p>
+                } @else {
+                    <p>nao tem produto</p>
+                }
+            }
+        }
+        @else {
+            <p>Não há curadores</p>
+        }
+    </div>
+</div>

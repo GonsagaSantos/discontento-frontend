@@ -36,4 +36,8 @@ export class ProdutoService {
   public postProduto(novoProduto: ProdutoGravarInterface): Observable<ProdutoGravarInterface> {
     return this.http.post<ProdutoGravarInterface>(`${this.apiUrl}/api/produto`, novoProduto)
   }
+
+  public buscarPorCurador(curador?: string): Observable<ProdutoInterface> {
+    return this.http.get<ProdutoInterface>(`${this.apiUrl}/api/produto/curador/${curador}`);
+  }
 }

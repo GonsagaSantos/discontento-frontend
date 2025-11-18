@@ -1,6 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'Trincha'; /* Escolha um nome para a fonte */
+    src: url('../public/fonts/Trincha/Trincha.otf') format('opentype'), /* Caminho do arquivo */
+        url('../public/fonts/Trincha/Trincha.ttf') format('opentype'); /* Adicione outros formatos para compatibilidade */
+    font-weight: normal; /* Opcional: defina o peso */
+    font-style: normal; /* Opcional: defina o estilo */
+}
+
+@font-face {
+    font-family: 'Sora';
+    src: url('../public/fonts/Sora/Sora-Medium.ttf') format('opentype');
+    font-weight: medium;
+    font-style: normal;
+}
+
 html, body {
     margin: 0;
-    font-family: Helvetica;
-    cursor: url('../public/discontento.ico'), auto;
+    font-family: 'Trincha', 'Sora';
+    background-color: #ffffff;
 }

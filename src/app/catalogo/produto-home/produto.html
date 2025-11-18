@@ -1,0 +1,77 @@
+<div class="carrossel">
+    <div class="group">
+        @for(produto of produtos; track produto.idProduto) {
+            @if(produto.urlImagem == '') {
+                <img class="carrossel-image" [src]="produto.cover_path" (click)="redirectToProductPage(produto)">
+            } @else {
+                <img class="carrossel-image" [src]="produto.urlImagem" (click)="redirectToProductPage(produto)">
+            }
+        }
+
+        @for(produto of produtos; track produto.idProduto) {
+            @if(produto.urlImagem == '') {
+                <img class="carrossel-image" [src]="produto.cover_path" (click)="redirectToProductPage(produto)">
+            } @else {
+                <img class="carrossel-image" [src]="produto.urlImagem" (click)="redirectToProductPage(produto)">
+            }
+        }
+    </div>
+</div>
+
+
+<div class="container">
+    <div class="faixa">
+        <p><a [routerLink]="['cadastro']" class="link-cadastro"><i class="bi bi-plus-circle-fill"></i></a></p>
+    </div>
+    
+    <div class="title">
+        <h1>Discos disponíveis:</h1>
+        <a href="">Pesquisar todos os discoss</a>
+    </div>
+    
+    <div class="catalogo-main">
+        <div class="produto-container">
+            @for(produto of produtos; track produto.idProduto) {
+                <div class="produto" (click)="redirectToProductPage(produto)">
+                    
+                    <div class="info-produto">
+                        @if (produto.quantidade == 0) {
+                            <div class="cover-container">
+                                <div class="faixa-esgotado">
+                                    <p>Esgotado :(</p>
+                                </div>
+                                @if(produto.urlImagem == '') {
+                                    <img class="carrossel-image" [src]="produto.cover_path" (click)="redirectToProductPage(produto)">
+                                } @else {
+                                    <img class="carrossel-image" [src]="produto.urlImagem" (click)="redirectToProductPage(produto)">
+                                }
+                            </div>
+                            <p class="preco-produto">R$ {{produto.valor}}</p>
+                            <h2 class="nome-produto">{{produto.nome}}</h2>
+                        } @else {
+                            @if(produto.urlImagem == '') {
+                                <img class="carrossel-image" [src]="produto.cover_path" (click)="redirectToProductPage(produto)">
+                            } @else {
+                                <img class="carrossel-image" [src]="produto.urlImagem" (click)="redirectToProductPage(produto)">
+                            }
+                            <p class="preco-produto">R$ {{produto.valor}}</p>
+                            <h2 class="nome-produto">{{produto.nome}}</h2>
+                        }
+
+                    </div>
+
+                </div>
+            }
+        </div>
+
+        <div class="barra-lateral">
+            <ul>
+                <li>Jazz</li>
+                <li>Rock</li>
+                <li>Soul</li>
+                <li>Funk</li>
+                <li>Pop</li>
+            </ul>
+        </div>
+    </div>
+</div>
