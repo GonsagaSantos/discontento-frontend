@@ -1,0 +1,154 @@
+.container {
+    margin: 6vw 0 0 0; 
+    display: grid;
+    grid-template-columns: 4fr 6fr; 
+    gap: 5vw; 
+    max-width: 1200px;
+    padding: 0 5vw;
+}
+
+.col-left {
+    display: flex;
+    flex-direction: column;
+    position: sticky;
+    top: 6vw;
+    height: 90vh;
+    overflow-y: scroll;
+    padding-right: 15px;
+    width: 20em;
+}
+
+.filtro {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 1em 2em 1em 2em;
+    padding-bottom: 1em;
+
+}
+
+.sem-filtro {
+    list-style: none;
+    font-family: 'Sora';
+}
+
+.filtro span {
+    font-size: 1.5em;
+    margin-bottom: 0.5em;
+}
+
+.col-left ul {
+    height: 15vh;
+    overflow-y: scroll;
+    list-style: none;
+    padding: 0;
+    margin-top: 5px;
+    width: 100%;
+}
+
+.col-left li {
+    font-family: 'Sora';
+    font-size: 0.8em;
+    cursor: pointer;
+    padding: 3px 0;
+    transition: color 0.2s, font-weight 0.2s;
+}
+
+.col-left li:hover {
+    color: #DB533B;
+}
+
+.col-left li.active-filter {
+    font-weight: bold;
+    color: #DB533B;
+    text-decoration: underline;
+}
+
+.col-right {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-top: 10px;
+}
+
+.album-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    align-items: flex-start;
+    gap: 2vw;
+}
+
+.album-info {
+    width: 13vw;
+    height: 13vw;
+    margin: 2em;
+}
+
+.album-info:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+    transition: all 0.3s ease;
+}
+
+.album-info img {
+    width: 100%;
+    height: 100%;
+    margin-bottom: 0;
+}
+
+.price-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 0;
+}
+
+.album-title {
+    font-size: 1.7em;
+}
+
+.album-price {
+    font-family: 'Sora';
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px; 
+        padding: 0 20px; 
+        margin-top: 5vh;
+    }
+
+    .col-left {
+        position: static;
+        height: auto;
+        overflow-y: visible;
+        width: 100%;
+        margin-bottom: 10px;
+        padding-right: 0;
+    }
+    
+    .col-right {
+        width: 100%;
+        margin-bottom: 10px;
+        margin-left: 0;
+    }
+    
+    .filtro {
+        width: 100%;
+    }
+
+    .album-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 0;
+    }
+    
+    .album-info {
+        width: 100%;
+        height: auto;
+        margin: 0;
+    }
+}

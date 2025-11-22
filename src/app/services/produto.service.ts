@@ -1,7 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { ProdutoInterface, ProdutoGravarInterface } from '../interfaces/produto.interface';
 
 @Injectable({
@@ -13,20 +12,15 @@ export class ProdutoService {
   constructor(private http: HttpClient) { }
 
   public getProdutos(): Observable<ProdutoInterface[]> {
-    return this.http.get<ProdutoInterface[]>(`${this.apiUrl}/api/produto`).pipe(
-      map(produtos => {
-        return produtos.map(produto => {
-          produto.cover_path = `cover-images/${produto.nome
-            .toLowerCase()
-            .replace(/ /g, '')
-            .normalize('NFD')
-            .replace(/[\u0300-\u036f]/g, '')
-            .replace(/[^a-z0-9]/g, '')
-          }.jpg`;
-          return produto;
-        });
-      })
-    );
+    return this.http.get<ProdutoInterface[]>(`${this.apiUrl}/api/produto`);
+  }
+
+  public getProdutosVitrine(): Observable<ProdutoInterface[]> {
+    return this.http.get<ProdutoInterface[]>(`${this.apiUrl}/api/produto/vitrine`);
+  }
+
+  public getProdutosCarrossel(): Observable<ProdutoInterface[]> {
+    return this.http.get<ProdutoInterface[]>(`${this.apiUrl}/api/produto/carrossel`);
   }
 
   public getProdutoById(idProduto: number): Observable<ProdutoInterface> {
@@ -36,8 +30,48 @@ export class ProdutoService {
   public postProduto(novoProduto: ProdutoGravarInterface): Observable<ProdutoGravarInterface> {
     return this.http.post<ProdutoGravarInterface>(`${this.apiUrl}/api/produto`, novoProduto)
   }
+  
+  //------------------------------------------------------------------ 2.1 Busca de Produtos
+    
+  public buscarPorGravadora(gravadora?: string): Observable<ProdutoInterface[]> {
+    return this.http.get<ProdutoInterface[]>(`${this.apiUrl}/api/produto/gravadora/${gravadora}`);
+  }
 
-  public buscarPorCurador(curador?: string): Observable<ProdutoInterface> {
-    return this.http.get<ProdutoInterface>(`${this.apiUrl}/api/produto/curador/${curador}`);
+  public buscarPorAno(ano?: string): Observable<ProdutoInterface[]> {
+    return this.http.get<ProdutoInterface[]>(`${this.apiUrl}/api/produto/ano/${ano}`);
+  }
+
+  public buscarPorPais(pais?: string): Observable<ProdutoInterface[]> {
+    return this.http.get<ProdutoInterface[]>(`${this.apiUrl}/api/produto/pais/${pais}`);
+  }
+
+  public buscarPorCurador(curador?: string): Observable<ProdutoInterface[]> {
+    return this.http.get<ProdutoInterface[]>(`${this.apiUrl}/api/produto/curador/${curador}`);
+  }
+  
+  public buscarPorKeyword(keyword?: string): Observable<ProdutoInterface[]> {
+    return this.http.get<ProdutoInterface[]>(`${this.apiUrl}/api/produto/buscar/${keyword}`)
+  }
+  
+  //------------------------------------------------------------------ 5. Listas
+
+  public buscarGeneros(): Observable<string[]> {
+    return this.http.get<string[]>(`${this.apiUrl}/api/produto/listar/generos`);
+  }
+
+  public buscarCuradores(): Observable<string[]> {
+    return this.http.get<string[]>(`${this.apiUrl}/api/produto/listar/curadores`)
+  }
+
+  public buscarGravadoras(): Observable<string[]> {
+    return this.http.get<string[]>(`${this.apiUrl}/api/produto/listar/gravadoras`)
+  }
+
+  public buscarAnos(): Observable<string[]> {
+    return this.http.get<string[]>(`${this.apiUrl}/api/produto/listar/anos`)
+  }
+  
+  public buscarPaises(): Observable<string[]> {
+    return this.http.get<string[]>(`${this.apiUrl}/api/produto/listar/paises`)
   }
 }

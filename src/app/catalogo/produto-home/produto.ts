@@ -12,14 +12,29 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class Produto implements OnInit {
   produtos: ProdutoInterface[] = [];
+  produtosCarrossel: ProdutoInterface[] = [];
   isLoading: boolean = true;
 
   constructor(private router: Router, private produtoService: ProdutoService, private renderer: Renderer2) {}
-  // constructor(private produtoService: ProdutoService) {}
 
   ngOnInit(): void {
     this.carregarProdutos();
-    
+    this.carregarProdutosCarrossel();
+  }
+
+  carregarProdutosCarrossel() {
+    this.isLoading = true;
+
+    this.produtoService.getProdutosCarrossel().subscribe({
+      next: (data) => {
+        this.produtosCarrossel = data;
+        this.isLoading = false;
+        console.log(data)
+      },
+      error: (erro) => {
+        console.log("Erro ao carregar produtos do carrossel.")
+      }
+    })
   }
 
   carregarProdutos() {
@@ -29,7 +44,7 @@ export class Produto implements OnInit {
       next: (data) => {
         this.produtos = data;
         this.isLoading = false;
-        console.log(data);
+        // console.log(data);
       },
       error: (error) => {
         console.error('Erro ao carregar produtos:', error);

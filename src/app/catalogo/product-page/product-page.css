@@ -1,11 +1,187 @@
 .container {
+    display: grid;
+    grid-template-columns: 40% 40% 20%;
+    justify-content: center;
+    gap: 0 20px;
+    padding: 40px;
+    margin-top: 5vw;
+}
+
+.col-center {
+    display: flex;
+    flex-direction: column;
+    width: 15vw;
+    height: 100%;
+}
+
+.product-info h1 {
+    font-family: 'Trincha';
+    font-size: 3em;
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.artist-release {
+    display: flex;
+    justify-content: space-between !important;
+}
+
+.product-info p {
+    font-family: 'Sora';
+    font-size: 1em;
+    margin-top: 0px;
+}
+
+.genre { 
+    font-family: 'Sora';
+    font-size: 0.7em !important;
+    margin-top: 4em;
+}
+
+.details {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 2em;
+    margin-bottom: 1em;
+
+    font-family: 'Sora';
+    font-size: 2em;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: auto !important;
+}
+
+.buy-button,
+.wishlist-button {
+    font-family: 'Sora';
+    background-color: #fff;
+    color: #000;
+    border-radius: 5%;
+
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-.imagem {
-    height: 40vw;
-    width: 40vw;
-    margin-top: 5vw;
+.buy-button {
+    width: 6em;
+    height: 3em;
+}
+
+.buy-button-disabled {
+    font-family: 'Sora';
+    background-color: #9e9e9e;
+    color: #000;
+    border-radius: 5%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 8em;
+    height: 3em;
+}
+
+.wishlist-button {
+    width: 3em;
+    height: 3em;
+}
+
+.buy-button:hover,
+.wishlist-button:hover {
+    background-color: #DB533B;
+    color: #fff;
+}
+
+.curator {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 6px;
+
+    font-family: 'Sora';
+}
+
+.col-left {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 0 !important;
+}
+
+.main-cover { 
+    width: 100%;
+    height: auto;
+}
+
+.descricao {
+    font-family: 'Sora';
+    overflow-y: hidden;
+}
+
+.col-right {
+    width: 10vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.recommend-covers {
+    width: 10vw;
+    height: 10vw;
+    margin-top: 1em;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+
+        overflow-x: hidden;
+    }
+
+    .col-left {
+        order: 1;
+    }
+
+    .col-center {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        order: 2;
+    }
+
+    .col-under-left {
+        order: 3;
+    }
+
+    .col-right {
+        width: 100%;
+        padding: 0 15px;
+        max-width: 100%;
+        order: 4;
+    }
+
+    .recommend-covers-wrapper { 
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap; 
+        -webkit-overflow-scrolling: touch; 
+        overflow-y: hidden;
+        overflow-x: auto; 
+        padding-bottom: 10px;
+        margin: 0 -15px;
+        padding: 0 15px 10px 15px;
+    }
+    
+    .recommend-covers {
+        width: 10em;
+        height: 10em;
+        margin: 0 1em 0 0;
+        flex-shrink: 0; 
+    }
+
 }

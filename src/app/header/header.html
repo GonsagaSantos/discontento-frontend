@@ -32,8 +32,10 @@
 
         <div class="links">
             <p> <i class="bi bi-search"></i> </p>
-            <p> <i class="bi bi-cart-fill"></i> </p>
+            <div class="carrinho" (click)="redirectToShoppingPage()">
+                <p> <i class="bi bi-cart-fill"></i> </p>
+                <div class="notification">1</div>
+            </div>
             <p [routerLink]="['/usuario']"><i class="bi bi-person-fill"></i></p>
-            <p [routerLink]="['/sobre']"><i class="bi bi-question"></i></p>
         </div>
         </header>

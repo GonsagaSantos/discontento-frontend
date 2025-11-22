@@ -7,19 +7,17 @@
     margin-right: 20%;
 }
 
-.catalogo-main {
+.title {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    margin-top: 2em;
 }
 
-.faixa-lateral {
-
+.link-catalogo {
+    font-family: 'Sora';
 }
 
-.produto-container {
+.produtos-container {
     align-items: center;
     justify-content: center;
     display: grid;
@@ -31,11 +29,6 @@
 .produto {
     border: 1px #232323;
     font-size: small;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8%;
     margin: 2em 1em 1em 2em;
     position: relative;
 }
@@ -49,14 +42,10 @@
 }
 
 .faixa-esgotado p {
-
+    align-items: center;
     text-align: center;
 }
 
-.info-produto {
-    margin: 0;
-    padding: 0;
-}
 
 .preco-produto {
     margin-right: auto;
@@ -114,8 +103,6 @@
     cursor: pointer;
     z-index: 10;
     position: relative;
-    /* border-left: 0.5px solid #ffea2f;
-    border-right: 0.5px solid #ffea2f; */
 }
 
 @keyframes spin {
@@ -135,4 +122,36 @@
 .link-cadastro {
     color:#fff;
     text-decoration: none;
+}
+
+@media screen and (max-width: 768px) {
+    .container {
+        display: flex;
+        flex-direction: column;
+
+        margin-top: 5vw;
+    }
+
+    .carrossel {
+        display: none;
+    }
+
+    .produtos-container {
+        align-items: center;
+        justify-content: center;
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        width: 100%;    
+    }
+
+    .produto {
+        width: 100%;
+        margin-left: auto !important;
+        margin-right: auto !important; 
+    }
+
+    .produto img {
+        width: 100%;
+        height: 100%;
+    }
 }

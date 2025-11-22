@@ -1,0 +1,68 @@
+<div class="container">
+    
+    <div class="col-left">
+        Filtros
+        
+        <div class="filtro">
+            <li class="sem-filtro" (click)="verTodosProdutos()">Todos os produtos</li>
+        </div>
+
+        <div class="filtro">
+            <span>Gêneros:</span>
+            <ul *ngIf="listaGeneros && listaGeneros.length > 0" class="lista-generos">
+                <li *ngFor="let genero of listaGeneros" (click)="filtrarPorGenero(genero)">{{ genero }}</li>
+            </ul>
+            <p *ngIf="!listaGeneros || listaGeneros.length === 0">Carregando gêneros...</p>
+        </div>
+
+        <div class="filtro">
+            <span>Curadores:</span>
+            <ul *ngIf="listaCuradores && listaCuradores.length > 0" class="lista-curadores">
+                <li *ngFor="let curador of listaCuradores" (click)="filtrarPorCurador(curador)">{{ curador }}</li>
+            </ul>
+            <p *ngIf="!listaCuradores || listaCuradores.length === 0">Carregando curadores...</p>
+        </div>
+        
+        <div class="filtro">
+            <span>Países:</span>
+            <ul *ngIf="listaPaises && listaPaises.length > 0" class="lista-paises">
+                <li *ngFor="let pais of listaPaises" (click)="filtrarPorPais(pais)">{{ pais }}</li>
+            </ul>
+            <p *ngIf="!listaPaises || listaPaises.length === 0">Carregando países...</p>
+        </div>
+
+        <div class="filtro">
+            <span>Anos:</span>
+            <ul *ngIf="listaAnos && listaAnos.length > 0" class="lista-anos">
+                <li *ngFor="let ano of listaAnos" (click)="filtrarPorAno(ano)">{{ ano }}</li>
+            </ul>
+            <p *ngIf="!listaAnos || listaAnos.length === 0">Carregando anos...</p>
+        </div>
+
+        <div class="filtro">
+            <span>Gravadoras:</span>
+            <ul *ngIf="listaGravadoras && listaGravadoras.length > 0" class="lista-gravadoras">
+                <li *ngFor="let gravadora of listaGravadoras" (click)="filtrarPorGravadora(gravadora)">{{ gravadora }}</li>
+            </ul>
+            <p *ngIf="!listaGravadoras || listaGravadoras.length === 0">Carregando gravadoras...</p>
+        </div>
+    </div>
+
+    <div class="col-right">
+        
+        <div class="album-grid">
+            @for(album of listaAlbuns; track album.idProduto) {
+                <div class="album-info" >
+                    <img [src]="album?.urlImagem" alt="" class="album-cover" (click)="redirectToProductPage(album)">
+
+                    <div class="price-title">
+                        <p class="album-title">{{album?.nome}}</p>
+                        <p class="album-price">R$ {{album?.valor}}</p>
+                    </div>
+                </div>
+            }
+        </div>
+
+    </div>
+
+</div>

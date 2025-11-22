@@ -1,25 +1,56 @@
 <div class="container">
-    <div class="produto-img">
-            <img class="imagem" [src]="[this.produto?.urlImagem]" alt="">
+    <div class="col-left">
+        <img [src]="produto?.urlImagem" alt="" class="main-cover">
+
+    </div>
+
+    <div class="col-center">
+        <div class="product-info">
+            <h1>{{produto?.nome}}</h1>
+
+            <div class="artist-release">
+                <p class="artist">{{produto?.artista}}</p>
+                <p>{{produto?.anoLancamento}}</p>
+            </div>
+            
+            <div class="curator">
+                <p class="label">Curador:</p>
+                <p class="value" (click)="procurarPorCurador(produto?.curador)" >{{produto?.curador}}</p>
+            </div>
+
+            <div class="details">
+                <p class="preco">R$ {{produto?.valor}}</p>
+                <p class="quantidade">{{produto?.quantidade}}</p>
+            </div>
+    
+        </div>
+
+        <div class="buttons">
+            @if (produto?.quantidade === 0) {
+                <div class="buy-button-disabled" readonly>ESGOTADO :(</div>
+            } @else {
+                <div class="buy-button" (click)="produto && redirectToShoppingPage(produto)">COMPRAR</div>
+            }
+            <div class="wishlist-button" readonly><i class="bi bi-heart-fill"></i></div>
+        </div>
+
+        <p class="genre">{{produto?.keywords}}</p>
     </div>
     
-    <div class="info">
-        @if(produto?.nome != null || produto?.nome != '') {
-            <p>{{produto?.nome}}</p>
-        }
-        @if(produto?.curador != null || produto?.curador != '') {
-            <p (click)="procurarPorCurador(produto?.curador)" >{{produto?.curador}}</p>
-
-            @for(produto of listaProdutos; track produto.idProduto) {
-                @if(produto) {
-                    <p>{{produto.nome}}</p>
-                } @else {
-                    <p>nao tem produto</p>
-                }
+    <div class="col-right">
+        <h3>Confira também:</h3>
+        
+        <div class="recommend-covers-wrapper">
+            @for (produto of listaProdutosVitrine; track produto.idProduto) {
+                
+                <img [src]="produto?.urlImagem" alt="" class="recommend-covers" (click)="redirectToProductPage(produto)">
+                
             }
-        }
-        @else {
-            <p>Não há curadores</p>
-        }
+        </div>
+
+    </div>
+
+    <div class="col-under-left">
+        <p class="descricao">{{produto?.descritivo}}</p>
     </div>
 </div>

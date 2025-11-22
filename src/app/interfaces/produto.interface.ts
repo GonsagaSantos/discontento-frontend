@@ -17,6 +17,7 @@ export interface ProdutoInterface {
   carrossel: number;
   underground: number;
   emPromo: number;
+  genres: string;
 }
 
 export interface ProdutoGravarInterface {
