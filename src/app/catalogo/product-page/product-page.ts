@@ -3,8 +3,7 @@ import { ProdutoInterface } from '../../interfaces/produto.interface';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ProdutoService } from '../../services/produto.service';
-import { switchMap } from 'rxjs/operators';
-import { of } from 'rxjs';
+import { CarrinhoStateService } from '../../services/carrinho-state.service';
 
 @Component({
   selector: 'app-product-page',
@@ -20,7 +19,8 @@ export class ProductPage implements OnInit {
   constructor(
     private route: ActivatedRoute, 
     private router: Router, 
-    private produtoService: ProdutoService
+    private produtoService: ProdutoService,
+    private carrinhoService: CarrinhoStateService
   ) {
   }
 
@@ -107,11 +107,6 @@ export class ProductPage implements OnInit {
 
   redirectToShoppingPage(produto: ProdutoInterface) {
     console.log('entrei na função de comprar')
-
-    this.router.navigate(['/carrinho'], {
-        state: {
-          objeto: produto
-        }
-    })
+    this.carrinhoService.adicionar(produto);
   }
 }

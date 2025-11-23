@@ -34,7 +34,8 @@
             <p> <i class="bi bi-search"></i> </p>
             <div class="carrinho" (click)="redirectToShoppingPage()">
                 <p> <i class="bi bi-cart-fill"></i> </p>
-                <div class="notification">1</div>
+
+                <div *ngIf="carrinhoCount && carrinhoCount > 0" class="notification">{{ carrinhoCount }}</div>
             </div>
             <p [routerLink]="['/usuario']"><i class="bi bi-person-fill"></i></p>
         </div>

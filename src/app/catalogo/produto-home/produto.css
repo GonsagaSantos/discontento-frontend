@@ -54,6 +54,10 @@
     font-size: 13px;
 }
 
+.title-artist {
+    display: inline;
+}
+
 .nome-produto {
     font-family: 'Sora';
     font-size: 17px;

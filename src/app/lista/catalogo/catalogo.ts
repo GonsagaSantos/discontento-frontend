@@ -40,40 +40,35 @@ export class Catalogo implements OnInit {
 
     this.produtoService.buscarGeneros().subscribe({
       next: (data: string[]) => {
-        this.listaGeneros.push(...data);
-        this.cdr.detectChanges(); 
+        this.listaGeneros = data;
         console.log(this.listaGeneros);
       }
     });
 
     this.produtoService.buscarGravadoras().subscribe({
       next: (data: string[]) => {
-        this.listaGravadoras.push(...data);
-        this.cdr.detectChanges();
+        this.listaGravadoras = data;
         console.log(this.listaGravadoras);
       }
     });
 
     this.produtoService.buscarPaises().subscribe({
       next: (data: string[]) => {
-        this.listaPaises.push(...data);
-        this.cdr.detectChanges();
+        this.listaPaises = data;
         console.log(this.listaPaises);
       }
     });
 
     this.produtoService.buscarCuradores().subscribe({
       next: (data: string[]) => {
-        this.listaCuradores.push(...data);
-        this.cdr.detectChanges();
+        this.listaCuradores = data;
         console.log(this.listaCuradores);
       }
     });
 
     this.produtoService.buscarAnos().subscribe({
       next: (data: string[]) => {
-        this.listaAnos.push(...data);
-        this.cdr.detectChanges();
+        this.listaAnos = data;
         console.log(this.listaAnos);
       }
     });
@@ -82,9 +77,8 @@ export class Catalogo implements OnInit {
   carregarAlbunsIniciais(): void {
     this.produtoService.getProdutos().subscribe({
       next: (data: ProdutoInterface[]) => {
-        this.listaAlbuns = data; 
+        this.listaAlbuns = data;
         this.listaAlbunsImutavel = data;
-        this.cdr.detectChanges();
         console.log("Álbuns iniciais carregados.");
       }
     });

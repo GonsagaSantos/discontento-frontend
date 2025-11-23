@@ -1,7 +1,78 @@
 <div class="container">
 
-    <div class="col-left">LEFT</div>
-    <div class="col-center">CENTER</div>
-    <div class="col-right">RIGHT</div>
+    <div class="col-left"></div>
+    
+    <div class="col-center">
+
+        <div class="carrinho-container">
+            <div *ngIf="itensNoCarrinho && itensNoCarrinho.length > 0; else vazio">
+                <h1>Itens no Carrinho:</h1>
+
+                <div *ngFor="let item of itensNoCarrinho" class="resumo-produto">
+                    <div class="infos">
+                        <p class="quantidade-produto"> <strong>{{ item.quantidadeCarrinho }}x</strong> </p>
+                        <p class="nome-album"> {{ item.nome }} </p>
+                        <p class="nome-artista"> {{ item.artista }} </p>
+                        <p class="preco">Valor Unitário: R$ {{ item.valor }}</p>
+                    </div>
+                    <div class="buttons">
+                        <p class="exclusao" (click)="removerItemDoCarrinho(item)"><i class="bi bi-cart-x"></i></p>
+                        <p class="adição" (click)="adicionarItemDoCarrinho(item)"><i class="bi bi-cart-plus"></i></p>
+                    </div>
+                </div>
+
+                <div class="total">
+                    <h1>Total:</h1>
+                    <p>{{ carrinhoService.valorTotal$ | async | currency:'BRL':'symbol':'1.2-2' }}</p>
+                </div>
+
+                <form [formGroup]="formEntrega" (ngSubmit)="enviarPedido()" class="form-entrega">
+                    <h1>Dados para Entrega</h1>
+    
+                    <div class="form-group">
+                        <label for="cep">CEP:</label>
+                        <input type="text" id="cep" formControlName="cepEntrega" maxlength="8">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="logradouro">Logradouro:</label>
+                        <input type="text" id="logradouro" formControlName="logradouroEntrega" maxlength="50">
+                    </div>
+    
+                    <div class="form-group-inline">
+                        <div class="form-group">
+                            <label for="numero">Número: *</label>
+                            <input type="text" id="numero" formControlName="numeroEntrega" maxlength="5" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="bairro">Bairro: *</label>
+                            <input type="text" id="bairro" formControlName="bairroEntrega" maxlength="50" required> 
+                        </div>
+                    </div>
+    
+                    <div class="form-group">
+                        <label for="cidade">Cidade: *</label>
+                        <input type="text" id="cidade" formControlName="cidadeEntrega" maxlength="50" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="telefone">Telefone de Contato:</label>
+                        <input type="tel" id="telefone" formControlName="telefoneContatoEntrega" maxlength="12">
+                    </div>
+    
+                    <button type="submit" [disabled]="formEntrega.invalid" class="btn-finalizar">
+                        Confirmar e Enviar Pedido
+                    </button>
+                </form>
+    
+            </div>
+            <ng-template #vazio>
+                <p class="alerta-vazio">Seu carrinho está vazio.</p>
+            </ng-template>
+        </div>
+        
+    </div>
+    
+    <div class="col-right"></div>
 
 </div>

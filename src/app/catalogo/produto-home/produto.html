@@ -50,7 +50,9 @@
                                         <img class="carrossel-image" [src]="produto.urlImagem" (click)="redirectToProductPage(produto)">
                                     }
                                 </div>
+
                                 <p class="preco-produto">R$ {{produto.valor}}</p>
+
                                 <h2 class="nome-produto">{{produto.nome}}</h2>
                             } @else {
                                 @if(produto.urlImagem == '') {
