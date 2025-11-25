@@ -52,6 +52,11 @@ export class ProdutoService {
   public buscarPorKeyword(keyword?: string): Observable<ProdutoInterface[]> {
     return this.http.get<ProdutoInterface[]>(`${this.apiUrl}/api/produto/buscar/${keyword}`)
   }
+
+  public buscarPorTermo(termo: string): Observable<ProdutoInterface[]> {
+    const encoded = encodeURIComponent(termo || '');
+    return this.http.get<ProdutoInterface[]>(`${this.apiUrl}/api/produto/nome/${encoded}`)
+  }
   
   //------------------------------------------------------------------ 5. Listas
 

@@ -35,9 +35,65 @@
     height: 5vw;
 }
 
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: absolute;
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 30; /* acima do título */
+}
+
+.title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: calc(100% - 160px);
+  z-index: 5;
+}
+
 .links {
   display: flex;
   padding: 10px;
+  text-align: center;
+  justify-content: center;
+  margin: 1em;
+  align-items: center;
+  gap: 8px;
+  top: 30%;
+  position: absolute;
+  right: 8px;
+  transform: translateY(-50%);
+}
+
+.input-busca {
+  width: 200px;
+  max-width: 25vw;
+  padding: 6px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.03);
+  color: #fff;
+  outline: none;
+  transition: width 0.18s ease-in-out, opacity 0.18s;
+  /* Fica dentro do .busca com flex */
+}
+
+.search-btn { cursor: pointer; }
+
+.links {
+  display: flex;
+  padding: 10px;
+  text-align: center;
+  justify-content: center;
+  margin: 1em;
 }
   
 .links p {
@@ -46,7 +102,21 @@
   font-weight: bold;
   font-style: none;
   color: #fff;
+
 }
+
+.busca {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  position: absolute;
+  right: 80px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 30;
+}
+
 
 .links p i {
   height: 50px;
@@ -90,7 +160,7 @@
     position: absolute; 
     top: -3px;
     right: -3px; 
-    z-index: 100; 
+    z-index: 40; 
 
     text-align: center;
     font-family: 'Sora';
@@ -119,10 +189,38 @@
     height: 10vw;
   }
 
-  .title {
-    margin-left: 3em;
-    margin-right: auto;
-  }
+    /* Em mobile manter o título central, reduzir fonte e garantir não cobrir ícones */
+    .title {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: calc(100% - 120px);
+      font-size: 1.1rem;
+      z-index: 5;
+    }
+
+    /* colocar as áreas esquerda/direita como estáticas em telas muito pequenas para evitar sobreposição estranha */
+    .header-left, .links {
+      position: static;
+      transform: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 30;
+    }
+
+    .input-busca {
+      position: relative;
+      right: auto;
+      top: auto;
+      transform: none;
+      margin-left: 8px;
+      max-width: 40vw;
+      z-index: 30;
+    }
 
   .letra {
     color: #fff;

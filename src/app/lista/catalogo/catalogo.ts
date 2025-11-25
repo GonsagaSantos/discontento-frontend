@@ -1,4 +1,5 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { ProdutoService } from '../../services/produto.service';
 import { Router } from '@angular/router';
 import { ProdutoInterface } from '../../interfaces/produto.interface';
@@ -26,12 +27,32 @@ export class Catalogo implements OnInit {
   constructor(
     private router: Router, 
     private produtoService: ProdutoService,
-    private cdr: ChangeDetectorRef 
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit(): void {
     this.carregarFiltros();
-    this.carregarAlbunsIniciais();
+
+    // Observa os query params para executar buscas quando houver `q`.
+    this.route.queryParams.subscribe(params => {
+      const termo = params['q'];
+      if (termo && termo.toString().trim().length > 0) {
+        // Se existe termo na query, realiza busca no backend
+        this.produtoService.buscarPorTermo(termo.toString()).subscribe({
+          next: (data: ProdutoInterface[]) => {
+            this.listaAlbuns = data;
+            this.listaAlbunsImutavel = data;
+            console.log(`Resultados da busca para: ${termo}`);
+          },
+          error: (err) => {
+            console.error('Erro ao buscar por termo:', err);
+            this.listaAlbuns = [];
+          }
+        });
+      } else {
+        this.carregarAlbunsIniciais();
+      }
+    });
   }
   
   // --- LÓGICA DE CARREGAMENTO INICIAL ---

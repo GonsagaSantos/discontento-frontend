@@ -51,16 +51,14 @@
     <div class="col-right">
         
         <div class="album-grid">
-            @for(album of listaAlbuns; track album.idProduto) {
-                <div class="album-info" >
-                    <img [src]="album?.urlImagem" alt="" class="album-cover" (click)="redirectToProductPage(album)">
+            <div class="album-info" *ngFor="let album of listaAlbuns">
+                <img [src]="album?.urlImagem" alt="" class="album-cover" (click)="redirectToProductPage(album)">
 
-                    <div class="price-title">
-                        <p class="album-title">{{album?.nome}}</p>
-                        <p class="album-price">R$ {{album?.valor}}</p>
-                    </div>
+                <div class="price-title">
+                    <p class="album-title">{{album?.nome}}</p>
+                    <p class="album-price">R$ {{album?.valor}}</p>
                 </div>
-            }
+            </div>
         </div>
 
     </div>
