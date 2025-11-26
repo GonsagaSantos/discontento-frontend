@@ -32,14 +32,14 @@
 
         <div class="links">
             <div class="busca">
-                        <input #searchInput *ngIf="searchOpen" type="text" id="input-busca" class="input-busca" placeholder="Buscar..." (keydown.escape)="abrirInput()" (keydown.enter)="fazerBusca(termoBusca.value)" [formControl]="termoBusca">
-                        <p (click)="abrirInput()" class="search-btn"> <i class="bi bi-search"></i> </p>
-                </div>
+                <input #searchInput *ngIf="searchOpen" type="text" id="input-busca" class="input-busca" placeholder="Buscar..." (keydown.escape)="abrirInput()" (keydown.enter)="fazerBusca(termoBusca.value)" [formControl]="termoBusca">
+                <p (click)="abrirInput()" class="search-btn"> <i class="bi bi-search"></i> </p>
+            </div>
             <div class="carrinho" (click)="redirectToShoppingPage()">
                 <p> <i class="bi bi-cart-fill"></i> </p>
 
                 <div *ngIf="carrinhoCount && carrinhoCount > 0" class="notification">{{ carrinhoCount }}</div>
             </div>
-            <p [routerLink]="['/usuario']"><i class="bi bi-person-fill"></i></p>
+            <p (click)="navegarParaPerfilOuCadastro()"><i class="bi bi-person-fill"></i></p>
         </div>
         </header>

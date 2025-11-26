@@ -36,37 +36,57 @@
         <div class="vitrine">
             <div class="produtos-container">
                 @for(produto of produtos; track produto.idProduto) {
-                    <div class="produto" (click)="redirectToProductPage(produto)">
+                    @if (produto.destaque == 1) {
+                        <div class="produto" (click)="redirectToProductPage(produto)">
                         
-                        <div class="info-produto">
-                            @if (produto.quantidade == 0) {
-                                <div class="cover-container">
-                                    <div class="faixa-esgotado">
-                                        <p>Esgotado :(</p>
+                            <div class="info-produto">
+                                @if (produto.quantidade == 0) {
+                                    <div class="cover-container">
+                                        <div class="faixa-esgotado">
+                                            <p>Esgotado :(</p>
+                                        </div>
+                                        @if(produto.urlImagem == '') {
+                                            <img class="carrossel-image" [src]="produto.cover_path" (click)="redirectToProductPage(produto)">
+                                        } @else {
+                                            <img class="carrossel-image" [src]="produto.urlImagem" (click)="redirectToProductPage(produto)">
+                                        }
                                     </div>
+    
+                                    <p class="preco-produto">R$ {{produto.valor}}</p>
+    
+                                    <h2 class="nome-produto">{{produto.nome}}</h2>
+                                } 
+                                
+                                @if (produto.emPromo == 1) {
+                                    <div class="cover-container">
+                                        <div class="faixa-promo">
+                                            <p>Em promoção!</p>
+                                        </div>
+                                        @if(produto.urlImagem == '') {
+                                            <img class="carrossel-image" [src]="produto.cover_path" (click)="redirectToProductPage(produto)">
+                                        } @else {
+                                            <img class="carrossel-image" [src]="produto.urlImagem" (click)="redirectToProductPage(produto)">
+                                        }
+                                    </div>
+    
+                                    <p class="preco-produto">R$ {{produto.promo}}</p>
+    
+                                    <h2 class="nome-produto">{{produto.nome}}</h2>
+                                }
+    
+                                @if (produto.quantidade > 0 && produto.emPromo == 0) {
                                     @if(produto.urlImagem == '') {
                                         <img class="carrossel-image" [src]="produto.cover_path" (click)="redirectToProductPage(produto)">
                                     } @else {
                                         <img class="carrossel-image" [src]="produto.urlImagem" (click)="redirectToProductPage(produto)">
                                     }
-                                </div>
-
-                                <p class="preco-produto">R$ {{produto.valor}}</p>
-
-                                <h2 class="nome-produto">{{produto.nome}}</h2>
-                            } @else {
-                                @if(produto.urlImagem == '') {
-                                    <img class="carrossel-image" [src]="produto.cover_path" (click)="redirectToProductPage(produto)">
-                                } @else {
-                                    <img class="carrossel-image" [src]="produto.urlImagem" (click)="redirectToProductPage(produto)">
+                                    <p class="preco-produto">R$ {{produto.valor}}</p>
+                                    <h2 class="nome-produto">{{produto.nome}}</h2>
                                 }
-                                <p class="preco-produto">R$ {{produto.valor}}</p>
-                                <h2 class="nome-produto">{{produto.nome}}</h2>
-                            }
-    
+        
+                            </div>
                         </div>
-    
-                    </div>
+                    }
                 }
             </div>
         </div>

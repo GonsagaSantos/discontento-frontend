@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router,  RouterModule } from '@angular/router';
+import { Router,  RouterModule } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { ProdutoInterface } from '../../interfaces/produto.interface'; 
 import { PedidoService } from '../../services/pedido.service';
+import { LoginService } from '../../services/login.service';
 import { Cliente, Item, PedidoInterface } from '../../interfaces/pedido.interface';
 import { CarrinhoStateService, ItemCarrinho } from '../../services/carrinho-state.service'; // ItemCarrinho da interface
 import { CommonModule } from '@angular/common'; // Adicionado para uso no HTML
@@ -18,6 +19,8 @@ export class Carrinho implements OnInit {
   itensNoCarrinho: ItemCarrinho[] = [];
   formEntrega: FormGroup;
   valorTotal: number | null = null;
+  isLoading: boolean = false;
+  errorMessage: string = '';
   // Corrigido: tornar público para uso no template
   public carrinhoService: CarrinhoStateService;
 
@@ -25,6 +28,7 @@ export class Carrinho implements OnInit {
     private router: Router, 
     private fb: FormBuilder,
     private pedidoService: PedidoService,
+    private loginService: LoginService,
     carrinhoService: CarrinhoStateService
   ) {
     this.formEntrega = this.fb.group({
@@ -50,7 +54,22 @@ export class Carrinho implements OnInit {
 
   enviarPedido() {
     if (this.formEntrega.invalid || this.itensNoCarrinho.length === 0) {
-      console.error("Erro: Formulário inválido ou carrinho vazio.");
+      this.errorMessage = "Por favor, preencha todos os campos obrigatórios e certifique-se de que o carrinho não está vazio.";
+      console.error(this.errorMessage);
+      return;
+    }
+
+    this.isLoading = true;
+    this.errorMessage = '';
+
+    const usuarioId = this.loginService.getUserId();
+    console.log('ID do usuário obtido:', usuarioId);
+    
+    if (!usuarioId) {
+      this.errorMessage = "Usuário não autenticado. Por favor, faça login antes de fazer um pedido.";
+      this.isLoading = false;
+      console.error("Sem ID de usuário, redirecionando para login");
+      this.router.navigate(['/usuario/login']);
       return;
     }
 
@@ -60,7 +79,7 @@ export class Carrinho implements OnInit {
         produto: { idProduto: item.idProduto }
     }));
     
-    const cliente: Cliente = { idCliente: 1 };
+    const cliente: Cliente = { idCliente: usuarioId };
     const pedidoFinal: PedidoInterface = {
         cliente: cliente,
         itens: itensParaBackend,
@@ -78,11 +97,15 @@ export class Carrinho implements OnInit {
       next: (data) => {
         console.log("Pedido finalizado com sucesso no backend.", data);
         this.carrinhoService.limparCarrinho(); 
-        
+        this.isLoading = false;
+        this.errorMessage = '';
+        alert('Pedido realizado com sucesso!');
         this.router.navigate(['/sucesso']);
       },
       error: (err) => {
         console.error("Erro no envio do pedido:", err);
+        this.errorMessage = "Erro ao finalizar o pedido. Verifique os dados e tente novamente.";
+        this.isLoading = false;
       }
     });
   }

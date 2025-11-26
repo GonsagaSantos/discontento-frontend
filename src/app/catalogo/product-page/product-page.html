@@ -42,9 +42,7 @@
         
         <div class="recommend-covers-wrapper">
             @for (produto of listaProdutosVitrine; track produto.idProduto) {
-                
-                <img [src]="produto?.urlImagem" alt="" class="recommend-covers" (click)="redirectToProductPage(produto)">
-                
+                <img [src]="produto?.urlImagem" alt="{{produto?.nome}}" class="recommend-covers" (click)="redirectToProductPage(produto)" title="{{produto?.nome}}">
             }
         </div>
 

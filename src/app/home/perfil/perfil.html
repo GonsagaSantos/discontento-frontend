@@ -1,0 +1,60 @@
+<div class="container">
+    
+    <div class="col-left">
+        @if (currentUser) {
+            <div class="perfil-info">
+                <h2>Seu Perfil</h2>
+                <p><strong>Nome:</strong> {{ currentUser.nome }}</p>
+                <p><strong>E-mail:</strong> {{ currentUser.email }}</p>
+                <p><strong>ID Cliente:</strong> #{{ currentUser.id }}</p>
+                <!-- <button class="btn-logout">Sair (Logout)</button> -->
+            </div>
+        } @else {
+            <p>Carregando dados do usuário...</p>
+        }
+    </div>
+
+    <div class="col-center">
+        <h2>Meus Pedidos</h2>
+
+        @if (isLoading) {
+            <p>Carregando histórico de pedidos...</p>
+        } @else if(listaPedidos && listaPedidos.length > 0) {
+            
+            @for (pedido of listaPedidos; track pedido.idPedido) {
+                <div class="pedido-card">
+                    <div class="pedido-header">
+                        <p><strong>Pedido #{{ pedido.idPedido }}</strong></p>
+                        <!-- (Restante do Header...) -->
+                    </div>
+                    
+                    <p><strong>Data:</strong> {{ pedido.dataPedido }}</p>
+                    <p><strong>Total:</strong> R$ {{ pedido.valorTotal | number:'1.2-2' }}</p>
+                    
+                    <div class="pedido-endereco">
+                        <p><strong>Entrega:</strong> {{ pedido.logradouroEntrega }}, {{ pedido.numeroEntrega }} - {{ pedido.bairroEntrega }} ({{ pedido.cepEntrega }})</p>
+                    </div>
+
+                    <details>
+                        <summary>Ver {{ pedido.itens.length }} Itens</summary>
+                        <ul class="lista-itens">
+                            @for (item of pedido.itens; track item.idItem) {
+                                <li>
+                                    {{ item.quantidade }}x - 
+                                    <!-- CORREÇÃO AQUI: Acessar as propriedades planas do DTO -->
+                                    {{ item.nomeProduto }} (R$ {{ item.precoUnitarioProduto | number:'1.2-2' }})
+                                </li>
+                            }
+                        </ul>
+                    </details>
+                </div>
+            }
+
+        } @else {
+            <p>Você ainda não realizou nenhum pedido.</p>
+        }
+
+    </div>
+    
+    <div class="col-right"></div>
+</div>

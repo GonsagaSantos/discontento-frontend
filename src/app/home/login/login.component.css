@@ -32,9 +32,39 @@
     align-items: end;
 }
 
+.form-container div input:disabled {
+    background-color: #f0f0f0;
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.error-message {
+    background-color: #ffebee;
+    color: #c62828;
+    padding: 12px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    border-left: 4px solid #d32f2f;
+    font-family: 'Sora';
+    font-size: 14px;
+}
+
+.form-container a {
+    font-family: 'Sora';
+    cursor: pointer;
+    
+    margin-top: 50px;
+    font-size: 10px;
+
+    display: flex;
+    justify-content: space-between;
+}
+
 .form-container button{
     font-family: 'Sora';
     cursor: pointer;
-    margin-top: 50px;
-    margin:  30px;
+    margin-top: 5px;
+
+    display: flex;
+    justify-content: space-between;
 }

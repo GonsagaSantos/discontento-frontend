@@ -1,10 +1,10 @@
 <div class="cadastro-usuario-container">
   <form #f="ngForm" (ngSubmit)="onSubmit()" class="form-container">
-    <h2>Cadastro de Usuário Simples</h2>
+    <h2>Cadastro</h2>
   
     <div>
       <label for="nome">Nome:</label>
-      <input id="nome" type="text" name="nome" [(ngModel)]="usuario.nome" placeholder="Nome">
+      <input id="nome" type="text" name="nome" [(ngModel)]="usuario.nome" placeholder="Salomão Borges Filho">
     </div>
   
     <div>
@@ -19,17 +19,27 @@
   
     <div>
       <label for="documento">Documento:</label>
-      <input id="documento" type="text" name="documento" [(ngModel)]="usuario.documento" placeholder="CPF/CNPJ">
+      <input id="documento" type="text" name="documento" [(ngModel)]="usuario.documento" placeholder="Documento">
     </div>
-  
-    <div class="checkbox-container">
-      <input id="ativo" type="checkbox" name="ativo" [(ngModel)]="usuario.ativo">
-      <label for="ativo">Usuário Ativo</label>
+
+    <div>
+      <label for="contato">Contato:</label>
+      <input id="contato" type="text" name="contato" [(ngModel)]="usuario.contato" placeholder="(11) 11111-1111">
+    </div>
+
+    <div>
+      <label for="cep">CEP:</label>
+      <input id="cep" type="text" name="cep" [(ngModel)]="usuario.cep" placeholder="11123-123">
+    </div>
+    
+    <div>
+      <label for="logradouro">logradouro:</label>
+      <input id="logradouro" type="text" name="logradouro" [(ngModel)]="usuario.logradouro" placeholder="52 W 8th St, New York, NY 10011, Estados Unidos">
     </div>
     
     <div class="buttons">
+      <button type="button" onclick="location.href='usuario/login'">Já tenho uma conta</button>
       <button type="submit" >Cadastrar Usuário</button>
-      <button type="button" onclick="location.href=''">Login</button>
     </div>
     
   </form>

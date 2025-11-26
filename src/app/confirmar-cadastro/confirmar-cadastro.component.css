@@ -1,0 +1,15 @@
+.container {
+    margin-top: 7vw;
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
+}
+
+.col-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.col-center p {
+    font-size: 5em;
+}

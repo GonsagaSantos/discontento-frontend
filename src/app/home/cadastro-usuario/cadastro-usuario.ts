@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'; 
-import { Dados, UsuarioGravar } from '../../services/usuario.service'; 
+import { Dados } from '../../services/usuario.service'; 
+import { UsuarioGravar } from '../../interfaces/usuario.interface';
 
 @Component({
   selector: 'app-cadastro-usuario',
@@ -17,6 +18,9 @@ export class CadastroUsuario {
     email: '',
     senha: '', 
     documento: '',
+    cep: '',
+    logradouro: '',
+    numero_contato: '',
     ativo: true 
   };
 
@@ -35,7 +39,10 @@ export class CadastroUsuario {
         email: this.usuario.email,
         documento: this.usuario.documento,
         senha: this.usuario.senha,
-        ativo: this.usuario.ativo ? 1 : 0 
+        cep: this.usuario.cep,
+        logradouro: this.usuario.logradouro,
+        numero_contato: this.usuario.numero_contato,
+        ativo: 1 
     };
     
     this.dadosService.salvarUsuario(dadosParaAPI).subscribe({

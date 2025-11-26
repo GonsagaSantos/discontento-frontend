@@ -1,0 +1,16 @@
+<div class="cadastro-usuario-container">
+  <form #f="ngForm" (ngSubmit)="onSubmit()" class="form-container">
+    <h2>Login</h2>
+
+    <div>
+      <label for="email">E-mail:</label>
+      <input id="email" type="email" name="email" [(ngModel)]="recuperacao.email" placeholder="E-mail">
+    </div>
+
+    <div class="buttons">
+      <button type="submit" >Enviar email</button>
+    </div>
+    
+  </form>
+
+</div>

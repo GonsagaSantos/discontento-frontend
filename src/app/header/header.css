@@ -74,35 +74,61 @@
 }
 
 .input-busca {
-  width: 200px;
-  max-width: 25vw;
-  padding: 6px 8px;
+  width: 180px;
+  max-width: 20vw;
+  padding: 8px 12px;
   border-radius: 6px;
-  border: 1px solid rgba(255,255,255,0.15);
-  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.3);
+  background: rgba(255,255,255,0.08);
   color: #fff;
+  font-family: 'Sora';
+  font-size: 14px;
   outline: none;
-  transition: width 0.18s ease-in-out, opacity 0.18s;
-  /* Fica dentro do .busca com flex */
+  transition: width 0.3s ease-in-out, background 0.3s;
 }
 
-.search-btn { cursor: pointer; }
+.input-busca:focus {
+  background: rgba(255,255,255,0.15);
+  border-color: rgba(255,255,255,0.5);
+}
+
+.input-busca::placeholder {
+  color: rgba(255,255,255,0.5);
+}
+
+.search-btn { 
+  cursor: pointer;
+  font-size: 18px;
+  transition: color 0.3s;
+}
+
+.search-btn:hover {
+  color: #fc6044;
+}
 
 .links {
   display: flex;
-  padding: 10px;
-  text-align: center;
-  justify-content: center;
-  margin: 1em;
+  align-items: center;
+  gap: 12px;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 30;
 }
   
 .links p {
-  margin: 0 5px 0 5px;
+  margin: 0;
   text-decoration: none;
   font-weight: bold;
-  font-style: none;
   color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+  transition: color 0.3s;
+}
 
+.links p:hover {
+  color: #fc6044;
 }
 
 .busca {
@@ -110,10 +136,6 @@
   justify-content: center;
   align-items: center;
   gap: 8px;
-  position: absolute;
-  right: 80px;
-  top: 50%;
-  transform: translateY(-50%);
   z-index: 30;
 }
 

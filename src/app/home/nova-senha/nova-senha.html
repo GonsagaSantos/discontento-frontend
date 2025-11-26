@@ -1,0 +1,21 @@
+<div class="cadastro-usuario-container">
+  <form [formGroup]="formNovaSenha" (ngSubmit)="onSubmit()" class="form-container">
+    <h2>Redefinir Senha</h2>
+
+    <div>
+      <label for="novaSenha">Nova Senha:</label>
+      <input id="novaSenha" type="password" formControlName="novaSenha" placeholder="Mínimo 6 caracteres">
+    </div>
+
+    <div>
+      <label for="confirmarSenha">Confirmar Senha:</label>
+      <input id="confirmarSenha" type="password" formControlName="confirmarSenha" placeholder="Repita a senha">
+    </div>
+
+    <div class="buttons">
+      <button type="submit" [disabled]="formNovaSenha.invalid">Trocar Senha</button>
+    </div>
+    
+  </form>
+
+</div>

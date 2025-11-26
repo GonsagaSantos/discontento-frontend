@@ -46,6 +46,18 @@
     text-align: center;
 }
 
+.faixa-promo {
+    position: absolute;
+    z-index: 99;
+    background-color: rgb(252, 96, 68);
+    /* height: 3em; */
+    width: 100%;
+}
+
+.faixa-promo p {
+    align-items: center;
+    text-align: center;
+}
 
 .preco-produto {
     margin-right: auto;

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Dados, Usuario } from "../../services/usuario.service";
+import { Dados } from "../../services/usuario.service";
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { Usuario } from '../../interfaces/usuario.interface';
 
 @Component({
   selector: 'app-lista-usuarios',

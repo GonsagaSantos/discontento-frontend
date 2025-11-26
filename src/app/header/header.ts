@@ -3,6 +3,7 @@ import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
 import { CarrinhoStateService } from '../services/carrinho-state.service';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { LoginService } from '../services/login.service';
 
 @Component({
   selector: 'app-header',
@@ -18,15 +19,12 @@ export class Header {
   @ViewChild('searchInput') searchInput?: ElementRef<HTMLInputElement>;
   termoBusca = new FormControl('');
 
-  constructor( private router: Router, private carrinhoStateService: CarrinhoStateService ) {  }
+  constructor( private router: Router, private carrinhoStateService: CarrinhoStateService, private loginService: LoginService ) {  }
 
   ngOnInit(): void {
     this.carrinhoStateService.itemCount$.subscribe(count => { 
       this.carrinhoCount = count
     })
-
-    // Busca acionada somente quando o usuário pressiona Enter (via template)
-    // Não acionamos buscas automáticas por debounce/valueChanges.
   }
 
   letras: string[] = "DISCONTENTO".split('');
@@ -57,27 +55,31 @@ export class Header {
     }
   }
 
-    fazerBusca(termo: string | null): void {
+  fazerBusca(termo: string | null): void {
       const query = (termo || '').toString().trim();
       if (!query) {
-        // Se o termo estiver vazio, apenas navega para o catálogo sem filtro
         this.router.navigate(['/catalogo']);
+        this.searchOpen = false;
         return;
       }
-
-      // Navega para a rota do catálogo com o termo como query param `q`.
-      // Angular cuidará do encoding dos espaços; o catálogo deve ler `q` e
-      // efetuar a chamada ao backend.
       this.router.navigate(['/catalogo'], { queryParams: { q: query } });
+      this.searchOpen = false;
+      this.termoBusca.reset();
     }
 
   limparResultadosOuRealizarBuscaGeral(): void {
-      // Quando o termo é apagado, você pode:
-      // 1. Chamar o serviço para recarregar o catálogo completo, ou
-      // 2. Notificar o catálogo para limpar a lista de resultados filtrados.
       console.log("Termo curto detectado. Limpando ou recarregando o catálogo completo.");
-      // Navega para o catálogo sem query param para mostrar todos os produtos
       this.router.navigate(['/catalogo']);
+  }
+
+  navegarParaPerfilOuCadastro(): void {
+    const logado = this.loginService.getIsLoggedInSnapshot();
+
+    if (logado) { 
+      this.router.navigate(['/usuario/perfil'])
+    } else {
+      this.router.navigate(['/usuario/cadastro'])
+    }
   }
 
 }

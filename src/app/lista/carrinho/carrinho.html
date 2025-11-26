@@ -5,6 +5,11 @@
     <div class="col-center">
 
         <div class="carrinho-container">
+            <!-- Mensagem de erro -->
+            <div *ngIf="errorMessage" class="error-message">
+                {{ errorMessage }}
+            </div>
+
             <div *ngIf="itensNoCarrinho && itensNoCarrinho.length > 0; else vazio">
                 <h1>Itens no Carrinho:</h1>
 
@@ -60,8 +65,8 @@
                         <input type="tel" id="telefone" formControlName="telefoneContatoEntrega" maxlength="12">
                     </div>
     
-                    <button type="submit" [disabled]="formEntrega.invalid" class="btn-finalizar">
-                        Confirmar e Enviar Pedido
+                    <button type="submit" [disabled]="formEntrega.invalid || isLoading" class="btn-finalizar">
+                        {{ isLoading ? 'Processando...' : 'Confirmar e Enviar Pedido' }}
                     </button>
                 </form>
     

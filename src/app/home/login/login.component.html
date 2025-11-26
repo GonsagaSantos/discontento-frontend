@@ -1,0 +1,32 @@
+<div class="cadastro-usuario-container">
+  <form #f="ngForm" (ngSubmit)="onSubmit()" class="form-container">
+    <h2>Login</h2>
+
+    <!-- Mensagem de erro -->
+    <div *ngIf="errorMessage" class="error-message">
+      {{ errorMessage }}
+    </div>
+
+    <div>
+      <label for="email">E-mail:</label>
+      <input id="email" type="email" name="email" [(ngModel)]="login.email" placeholder="E-mail" [disabled]="isLoading">
+    </div>
+  
+    <div>
+      <label for="senha">Senha:</label>
+      <input id="senha" type="password" name="senha" [(ngModel)]="login.senha" placeholder="Senha" [disabled]="isLoading">
+    </div>
+    
+
+    <a href="usuario/recuperar">Esqueci a senha</a>
+
+    <div class="buttons">
+      <button type="button" onclick="location.href='usuario/cadastro'" [disabled]="isLoading">Cadastro</button>
+      <button type="submit" [disabled]="isLoading || !login.email || !login.senha">
+        {{ isLoading ? 'Carregando...' : 'Acessar' }}
+      </button>
+    </div>
+    
+  </form>
+ 
+</div>
